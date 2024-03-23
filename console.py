@@ -126,8 +126,8 @@ class HBNBCommand(cmd.Cmd):
         storage.save()
         print(new_instance.id)
 
-        raw_params = args_lst[1:]
-        if raw_params:
+        if len(args_lst) > 1:
+            raw_params = args_lst[1:]
             params = {}
 
             for item in raw_params:
