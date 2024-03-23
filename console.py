@@ -127,18 +127,19 @@ class HBNBCommand(cmd.Cmd):
         print(new_instance.id)
 
         raw_params = args_lst[1:]
-        params = {}
+        if raw_params:
+            params = {}
 
-        for item in raw_params:
-            index = item.find('="')
-            if index != -1 and index > 0 and index < len(item) - 2:
-                tmp = item.split('=')
-                params[tmp[0]] = tmp[1].strip('"').replace('_', ' ')
+            for item in raw_params:
+                index = item.find('="')
+                if index != -1 and index > 0 and index < len(item) - 2:
+                    tmp = item.split('=')
+                    params[tmp[0]] = tmp[1].strip('"').replace('_', ' ')
 
-        for param, val in params.items():
-            setattr(new_instance, param, val)
+            for param, val in params.items():
+                setattr(new_instance, param, val)
 
-        storage.save()
+            storage.save()
 
     def help_create(self):
         """ Help information for the create method """
