@@ -8,7 +8,7 @@ class FileStorage:
     __file_path = 'file.json'
     __objects = {}
 
-    def all(self, cls=None)
+    def all(self, cls=None):
         """
         Returns a dictonary of models of a given class currently in storage
         if no class provided, it returns a dictionary of all classes
@@ -16,7 +16,7 @@ class FileStorage:
         tmp_objects = {}
         if cls:
             for key, val in FileStorage.__objects.items():
-                if cls in key:
+                if cls.__name__ in key:
                     tmp_objects[key] = val
         else:
             tmp_objects = FileStorage.__objects
