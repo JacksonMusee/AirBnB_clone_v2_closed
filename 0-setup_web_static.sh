@@ -32,13 +32,13 @@ sudo sed -i '/http {/a \
     server {\
         server_name cityspaces.tech;\
         \
-        return 301 $scheme://localhost@request_uri;\
+        return 301 $scheme://localhost$request_uri;\
     }\
     \
     server {\
         server_name www.cityspaces.tech;\
         \
-        return 301 $scheme://localhost@request_uri;\
+        return 301 $scheme://localhost$request_uri;\
     }\
     \
     server {\
