@@ -1,5 +1,8 @@
 #!/usr/bin/env bash
 #Settng up new server
+
+# shellcheck disable=SC2154
+
 # Install Nginx if not already installed
 if ! command -v nginx &> /dev/null; then
     sudo apt-get update
