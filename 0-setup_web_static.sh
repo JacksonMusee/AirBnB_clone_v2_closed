@@ -34,8 +34,8 @@ sudo sed -i '/http {/a \
     server {\
         server_name localhost;\
         \
-        location /hbnb_static/ {\
-            alias /data/web_static/current/;\
+        location /hbnb_static {\
+            alias /data/web_static/current;\
         }\
         \
         location / {\
