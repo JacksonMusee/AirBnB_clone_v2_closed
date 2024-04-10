@@ -6,8 +6,6 @@ if ! command -v nginx &> /dev/null; then
     sudo aptget install -y nginx
 fi
 
-sudo fuser -k 80/tcp
-
 sudo service nginx start
 
 sudo mkdir -p /data/web_static/{releases/test,shared}
