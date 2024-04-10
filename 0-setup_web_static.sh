@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-#Setting new server
+#Settng up new server
 # Install Nginx if not already installed
 if ! command -v nginx &> /dev/null; then
     sudo apt-get update
@@ -13,16 +13,14 @@ sudo mkdir -p /data/web_static/{releases/test,shared}
 sudo tee /data/web_static/releases/test/index.html > /dev/null <<EOF
 <html>
   <head>
-    <title>Test Page</title>
   </head>
   <body>
-    <h1>Hello, this is a test page</h1>
-    <p>This is just a test to verify Nginx configuration.</p>
+    Holberton School
   </body>
 </html>
 EOF
 
-# Create symbolic link
+# Create symbolic link (delete and recreate if already exists)
 if [ -L "/data/web_static/current" ]; then
     sudo rm "/data/web_static/current"
 fi
@@ -31,7 +29,7 @@ sudo ln -s /data/web_static/releases/test /data/web_static/current
 # Give ownership to the ubuntu user and group
 sudo chown -R ubuntu:ubuntu /data/
 
-# Update Nginx configuration
+# Update Nginx configuration to serve content to hbnb_static
 sudo tee /etc/nginx/sites-available/hbnb_static > /dev/null <<EOF
 server {
     listen 80;
@@ -53,5 +51,8 @@ EOF
 sudo ln -sf /etc/nginx/sites-available/hbnb_static /etc/nginx/sites-enabled/
 
 # Restart Nginx
-sudo systemctl restart nginx
+sudo service nginx restart
+
+# Exit successfully
+exit 0
 
