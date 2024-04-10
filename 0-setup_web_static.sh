@@ -6,7 +6,7 @@ if ! command -v nginx &> /dev/null; then
     sudo aptget install -y nginx
 fi
 
-sudo service nginx start
+sudo service nginx start &> /dev/null
 
 sudo mkdir -p /data/web_static/{releases/test,shared}
 sudo touch /data/web_static/releases/test/index.html
@@ -44,4 +44,4 @@ sudo sed -i '/http {/a \
     }\
     ' /etc/nginx/nginx.conf
 
-sudo service nginx restart
+sudo service nginx restart &> /dev/null
