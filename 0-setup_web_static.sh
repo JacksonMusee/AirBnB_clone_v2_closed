@@ -75,6 +75,3 @@ sudo ln -sf /etc/nginx/sites-available/hbnb_static /etc/nginx/sites-enabled/
 
 # Restart Nginx
 sudo service nginx restart
-
-# Exit successfully
-exit 0
