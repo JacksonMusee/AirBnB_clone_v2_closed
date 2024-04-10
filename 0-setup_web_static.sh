@@ -31,7 +31,7 @@ sudo chown -R ubuntu:ubuntu /data/
 
 # Update Nginx configuration to serve content to hbnb_static
 sudo tee /etc/nginx/sites-available/hbnb_static > /dev/null <<EOF
-sevrer {
+server {
    listen 80;
    listen [::]:80;
 
@@ -75,4 +75,3 @@ sudo service nginx restart
 
 # Exit successfully
 exit 0
-
