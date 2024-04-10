@@ -6,7 +6,7 @@ if ! command -v nginx &> /dev/null; then
     aptget install -y nginx
 fi
 
-nginx
+service nginx start
 
 mkdir -p /data/web_static/{releases/test,shared}
 touch /data/web_static/releases/test/index.html
@@ -33,9 +33,6 @@ sed -i '/http {/a \
     \
     server {\
         listen 80;\
-        listen [::]:80;\
-        \
-        server_name _;\
         \
         location /hbnb_static {\
             alias /data/web_static/current/;\
@@ -47,4 +44,4 @@ sed -i '/http {/a \
     }\
     ' /etc/nginx/nginx.conf
 
-nginx -s reload
+service nginx restart
