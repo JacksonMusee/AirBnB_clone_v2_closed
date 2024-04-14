@@ -7,7 +7,6 @@ and distributes an archive to your web servers, using the function deploy
 from fabric.operations import run, put
 from fabric.api import env
 from os.path import exists
-#Border
 from fabric.operations import local
 from datetime import datetime
 
@@ -32,7 +31,7 @@ def do_pack():
         return (f"versions/{file_name}")
 
     except Exception as e:
-        return
+        return None
 
 
 def do_deploy(archive_path):
@@ -64,6 +63,7 @@ def do_deploy(archive_path):
 
     except Exception as e:
         return False
+
 
 def deploy():
     """
