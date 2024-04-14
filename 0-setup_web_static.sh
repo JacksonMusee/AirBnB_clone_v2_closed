@@ -36,23 +36,18 @@ sudo chown -R ubuntu:ubuntu /data/
 # Update Nginx configuration to serve content to hbnb_static
 sudo tee /etc/nginx/sites-available/hbnb_static > /dev/null <<EOF
 server {
-   listen 80;
-   listen [::]:80;
+    listen 80;
+    listen [::]:80;
 
-    server_name cityspaces.tech;
+    server_name cityspaces.tech www.cityspaces.tech 100.26.247.135 18.235.248.212;
 
-    return 301 $scheme://localhost$request_uri;
-   
-}
+    location /hbnb_static {
+        alias /data/web_static/current;
+    }
 
-server {
-   listen 80;
-   listen [::]:80;
-
-    server_name www.cityspaces.tech;
-
-    return 301 $scheme://localhost$request_uri;
-
+    location / {
+        return 404;
+    }
 }
 
 server {
