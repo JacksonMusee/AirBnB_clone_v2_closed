@@ -31,13 +31,13 @@ def do_deploy(archive_path):
         remote_archive_path = "/tmp/" + archive_name
 
         run(f"mkdir -p /data/web_static/releases/{rm_extension}")
-        run(f"tar -xzf {remote_archive_path} -C /data/web_static/\
-              releases/{rm_extension}")
+        run(f"tar -xzf {remote_archive_path} -C \
+		/data/web_static/releases/{rm_extension}")
         run(f"rm -rf {remote_archive_path}")
 
         run("rm -rf /data/web_static/current")
-        run(f"ln -s /data/web_static/releases/{rm_extension} /data/\
-              web_static/current")
+        run(f"ln -s /data/web_static/releases/{rm_extension} \
+		/data/web_static/current")
 
         return True
 
