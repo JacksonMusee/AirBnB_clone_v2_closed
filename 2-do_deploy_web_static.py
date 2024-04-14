@@ -21,7 +21,7 @@ def do_deploy(archive_path):
         if not exists(archive_path):
             return False
 
-        put(archive_path "/tmp/")
+        put(archive_path, "/tmp/")
 
         archive_name = archive_path.split("/")[-1]
         rm_extension = archive_name.split(".")[0]
