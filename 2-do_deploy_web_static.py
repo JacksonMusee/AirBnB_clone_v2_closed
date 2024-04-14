@@ -31,10 +31,10 @@ def do_deploy(archive_path):
 
         run(f"mkdir -p /data/web_static/releases/{rm_extension}")
         run(f"tar -xzf {remote_archive_path} -C /data/web_static/releases/{rm_extension}")
-        run(f"rm -r {remote_archive_path}")
+        run(f"rm -rf {remote_archive_path}")
 
-        run("rm -r /data/web_static/current")
-        run(f"ln -sf /data/web_static/releases/{rm_extension} /data/web_static/current")
+        run("rm -rf /data/web_static/current")
+        run(f"ln -s /data/web_static/releases/{rm_extension} /data/web_static/current")
 
         return True
 
