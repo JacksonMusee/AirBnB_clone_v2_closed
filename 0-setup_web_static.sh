@@ -70,6 +70,11 @@ server {
 }
 EOF
 
+sed -i '/http {/ {
+    a\
+    include /etc/nginx/sites-available/hbnb_static;
+}' /etc/nginx/nginx.conf
+
 # Create symbolic link to enable the new configuration
 sudo ln -sf /etc/nginx/sites-available/hbnb_static /etc/nginx/sites-enabled/
 
