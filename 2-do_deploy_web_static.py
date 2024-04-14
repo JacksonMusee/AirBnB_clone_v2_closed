@@ -8,7 +8,7 @@ from fabric.operations import run, put
 from os.path import exists
 
 
-env.hosts = [193236-web-01, 193236-web-02]
+env.hosts = ["100.26.247.135","	18.235.248.212"]
 env.key_filename = '~/.ssh/school'
 env.user = 'ubuntu'
 
