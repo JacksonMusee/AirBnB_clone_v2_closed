@@ -18,7 +18,7 @@ def do_pack():
         tmestmp_str = datetime.now().strftime('%Y%m%d%H%M%S')
         file_name = "web_static_" + tmestmp_str + ".tgz"
 
-        local(f"tar -cvzf versions/{file_name} web_static")
+        local(f"tar -cvzf versions/{file_name} -C web_static .")
 
         return (f"versions/{file_name}")
 
