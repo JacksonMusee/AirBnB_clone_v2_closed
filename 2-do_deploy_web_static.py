@@ -5,6 +5,7 @@ an archive to your web servers, using the function do_deploy
 """
 
 from fabric.operations import run, put
+from fabric import env
 from os.path import exists
 
 
