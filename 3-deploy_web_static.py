@@ -58,7 +58,7 @@ def do_deploy(archive_path):
         run(f"rm -rf {remote_archive_path}")
 
         run("rm -rf /data/web_static/current")
-        run(f"ln -s /data/web_static/releases/{rm_extension}/ \
+        run(f"ln -s /data/web_static/releases/{rm_extension} \
            /data/web_static/current")
 
         return True
