@@ -2,6 +2,7 @@
 #Settng up new server
 
 # shellcheck disable=SC2154
+# shellcheck disable=SC1004
 
 # Install Nginx if not already installed
 if ! command -v nginx &> /dev/null; then
