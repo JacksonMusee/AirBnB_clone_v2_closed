@@ -16,6 +16,7 @@ env.hosts = ["100.26.247.135", "18.235.248.212"]
 env.key_filename = '~/.ssh/school'
 env.user = 'ubuntu'
 
+
 @runs_once
 def do_pack():
     """
