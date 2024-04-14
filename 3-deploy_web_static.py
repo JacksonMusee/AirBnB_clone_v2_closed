@@ -8,6 +8,7 @@ from fabric.operations import run, put
 from fabric.api import env
 from os.path import exists
 from fabric.operations import local
+from fabric.decorators import runs_once
 from datetime import datetime
 
 
@@ -15,7 +16,7 @@ env.hosts = ["100.26.247.135", "18.235.248.212"]
 env.key_filename = '~/.ssh/school'
 env.user = 'ubuntu'
 
-
+@runs_once
 def do_pack():
     """
     Function to create a .tgz archive of the web_static directory
@@ -65,6 +66,7 @@ def do_deploy(archive_path):
         return False
 
 
+@runs_once
 def deploy():
     """
     Full deployment
