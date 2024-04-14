@@ -7,11 +7,32 @@ an archive to your web servers, using the function do_deploy
 from fabric.operations import run, put
 from fabric.api import env
 from os.path import exists
+#Border
+from fabric.operations import local
+from datetime import datetime
 
 
 env.hosts = ["100.26.247.135", "18.235.248.212"]
 env.key_filename = '~/.ssh/school'
 env.user = 'ubuntu'
+
+
+def do_pack():
+    """
+    Function to create a .tgz archive of the web_static directory
+    """
+    try:
+        local("mkdir -p versions")
+
+        tmestmp_str = datetime.now().strftime('%Y%m%d%H%M%S')
+        file_name = "web_static_" + tmestmp_str + ".tgz"
+
+        local(f"tar -cvzf versions/{file_name} -C web_static .")
+
+        return (f"versions/{file_name}")
+
+    except Exception as e:
+        return
 
 
 def do_deploy(archive_path):
