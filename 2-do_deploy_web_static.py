@@ -14,7 +14,7 @@ env.user = 'ubuntu'
 
 def do_deploy(archive_path):
     """
-    Task/function to upload an acrchivr, extract and deploy new version
+    Task/function to upload an archive, extract and deploy new version
     of web_static
     """
     try:
