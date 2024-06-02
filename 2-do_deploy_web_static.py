@@ -13,7 +13,7 @@ from datetime import datetime
 
 
 env.hosts = ["100.26.247.135", "18.235.248.212"]
-env.key_filename = '~/.ssh/school'
+env.key_filename = '~/.ssh/id_rsa'
 env.user = 'ubuntu'
 
 
@@ -27,7 +27,7 @@ def do_pack():
         tmestmp_str = datetime.now().strftime('%Y%m%d%H%M%S')
         file_name = "web_static_" + tmestmp_str + ".tgz"
 
-        local(f"tar -cvzf versions/{file_name} -C web_static .")
+        local(f"tar -cvzf versions/{file_name} web_static")
 
         return (f"versions/{file_name}")
 
