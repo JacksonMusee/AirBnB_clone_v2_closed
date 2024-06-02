@@ -7,7 +7,6 @@ an archive to your web servers, using the function do_deploy
 from fabric.operations import run, put
 from fabric.api import env
 from os.path import exists
-#Border
 from fabric.operations import local
 from datetime import datetime
 
