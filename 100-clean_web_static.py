@@ -91,6 +91,9 @@ def do_clean(number=0):
 
     point = number + 2
 
-    local("ls -lt versions | tail -n +{0} | awk '{{print $9}}' | xargs -I {{}} rm -r versions/{{}}".format(point))
+    local("ls -lt versions | tail -n +{0} | awk '{{print $9}}' |\
+            xargs -I {{}} rm -r versions/{{}}".format(point))
 
-    run("ls -lt /data/web_static/releases | tail -n +{0} | awk '{{print $9}}' | xargs -I {{}} rm -r /data/web_static/releases/{{}}".format(point))
+    run("ls -lt /data/web_static/releases | tail -n +{0} |\
+            awk '{{print $9}}' | xargs -I {{}} rm -r /data/\
+            web_static/releases/{{}}".format(point))
