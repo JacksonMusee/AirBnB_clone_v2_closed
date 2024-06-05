@@ -89,7 +89,7 @@ def do_clean(number=0):
     if number == 0:
         number = 1
 
-    point = number
+    point = number + 2
 
     local("ls -lt versions | tail -n +{0} | awk '{{print $9}}' | xargs -I {{}} rm -r versions/{{}}".format(point))
 
