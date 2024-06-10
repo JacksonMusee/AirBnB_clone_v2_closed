@@ -13,6 +13,7 @@ def index():
     '''Home route'''
     return 'Hello HBNB!'
 
+
 @app.route('/hbnb', strict_slashes=False)
 def hbnb():
     '''Home route'''
