@@ -35,15 +35,11 @@ def python(text="is cool"):
     return "Python " + clean_txt
 
 
-@app.route('/number/<n>', strict_slashes=False)
+@app.route('/number/<int:n>', strict_slashes=False)
 def number(n):
     '''Only if n is a number'''
-    try:
-        num = int(n)
-        return "{} is a number".format(num)
-
-    except exception:
-        abort(404, description="Resource not found")
+  
+    return "{} is a number".format(n)
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=5000)
+    app.run()
