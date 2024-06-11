@@ -35,7 +35,7 @@ def python(text="is cool"):
     return "Python " + clean_txt
 
 
-@app.route('/number/<n>')
+@app.route('/number/<n>', strict_slashes=False)
 def number(n):
     '''Only if n is a number'''
     try:
@@ -43,7 +43,7 @@ def number(n):
         return "{} is a number".format(num)
 
     except exception:
-        pass
+        abort(404, description="Resource not found")
 
 if __name__ == '__main__':
-    app.run()
+    app.run(host='0.0.0.0', port=5000)
