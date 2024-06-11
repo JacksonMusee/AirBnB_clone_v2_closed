@@ -38,7 +38,7 @@ def python(text="is cool"):
 @app.route('/number/<int:n>', strict_slashes=False)
 def number(n):
     '''Only if n is a number'''
-  
+
     return "{} is a number".format(n)
 
 if __name__ == '__main__':
