@@ -66,7 +66,6 @@ class FileStorage:
             key = '{}.{}'.format(obj.__class__.__name__, obj.id)
             self.__objects.pop(key)
 
-
     def close(self):
         """deserializing the JSON file to objects"""
         self.reload()
