@@ -11,20 +11,21 @@ class DBStorage:
     __session = None
 
     def __init__(self):
-       """Instantiates DBStorage"""
-       env = getenv("HBNB_ENV")
-       usr = getenv("HBNB_MYSQL_USER")
-       passwd = getenv("HBNB_MYSQL_PWD")
-       host = getenv("HBNB_MYSQL_HOST")
-       db = getenv("HBNB_MYSQL_DB")
+        """Instantiates DBStorage"""
+        env = getenv("HBNB_ENV")
+        usr = getenv("HBNB_MYSQL_USER")
+        passwd = getenv("HBNB_MYSQL_PWD")
+        host = getenv("HBNB_MYSQL_HOST")
+        db = getenv("HBNB_MYSQL_DB")
 
-       self.__engine = create_engine('mysql+mysqldb://{}:{}@{}/{}'.format(usr, passwd, host, db), pool_pre_ping=True)
+        self.__engine = create_engine('mysql+mysqldb://{}:{}@{}/{}'.format(usr, passwd, host, db), pool_pre_ping=True)
 
-       if env == "test":
-           Base.metadata.drop_all(self.__engine)
+        if env == "test":
+            Base.metadata.drop_all(self.__engine)
 
-       Base.metadata.create_all(self.__engine)
-       self.__session = scoped_session(sessionmaker(bind=self.__engine, expire_on_commit=False))
+        Base.metadata.create_all(self.__engine)
+        self.__session = scoped_session(sessionmaker(bind=self.__engine, expire_on_commit=False))
+
 
     def all(self, cls=None):
         """
