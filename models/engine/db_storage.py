@@ -18,7 +18,7 @@ class DBStorage:
        host = getenv("HBNB_MYSQL_HOST")
        db = getenv("HBNB_MYSQL_DB")
 
-       self.__engine = create_engine(f'mysql+mysqldb://{usr}:{passwd}@{host}/{db}', pool_pre_ping=True)
+       self.__engine = create_engine('mysql+mysqldb://{}:{}@{}/{}'.format(usr, passwd, host, db), pool_pre_ping=True)
 
        if env == "test":
            Base.metadata.drop_all(self.__engine)
@@ -34,11 +34,11 @@ class DBStorage:
         objects = {}
         if cls:
             for obj in self.__session.query(cls).all():
-                key = f'{type(obj).__name__}.{obj.id}'
+                key = '{}.{}'.format(type(obj).__name__, obj.id)
                 objects[key] = obj
         else:
             for obj in self.__session.query().all():
-                key = f'{type(obj).__name__}.{obj.id}'
+                key = '{}.{}'.format(type(obj).__name__, obj.id)
                 objects[key] = obj
         return objects
 
@@ -59,3 +59,7 @@ class DBStorage:
         """Create all tables in the database and create current session (Thread safe)"""
         Base.metadata.create_all(self.__engine)
         self.__session = scoped_session(sessionmaker(bind=self.__engine, expire_on_commit=False))
+
+    def close(self):
+        """Closes the current database session"""
+        self.__session.close()
