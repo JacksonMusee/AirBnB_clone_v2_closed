@@ -26,10 +26,9 @@ class DBStorage:
         if env == "test":
             Base.metadata.drop_all(self.__engine)
 
-        #Base.metadata.create_all(self.__engine)
-        #self.__session = scoped_session(sessionmaker(bind=self.__engine,
-         #                                            expire_on_commit=False))
-        self.reload()
+        Base.metadata.create_all(self.__engine)
+        self.__session = scoped_session(sessionmaker(bind=self.__engine,
+                                                     expire_on_commit=False))
 
     def all(self, cls=None):
         """
