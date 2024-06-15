@@ -5,7 +5,6 @@ from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker, scoped_session
 from models.base_model import Base
 
-
 class DBStorage:
     """An instance of this class class is an instance of db"""
     __engine = None
@@ -68,4 +67,5 @@ class DBStorage:
     def close(self):
         """Closes the current database session"""
         self.__session.remove()
-        self.reload()
+        self.__session = scoped_session(sessionmaker(bind=self.__engine,
+                                                     expire_on_commit=False))
